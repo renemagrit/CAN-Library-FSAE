@@ -28,7 +28,7 @@
 #define DTA2_OilPres 1,3
 
 #define DTA3_OilTemp 2,1
-#define DTA3_ Volts 2,2
+#define DTA3_Volts 2,2
 
 #define DTA4_Gear 3,0
 
