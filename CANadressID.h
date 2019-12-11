@@ -16,6 +16,26 @@
 */
 
 //MACRO potpis: ID,POS
+/*
+#define DTA1_RPM 8192,0
+#define DTA1_TPS 8192,1
+#define DTA1_WaterTemp 8192,2
+#define DTA1_AirTemp 8192,3
+
+#define DTA2_MAP 8193,0
+#define DTA2_Lambda 8193,1
+#define DTA2_Speed 8193,2
+#define DTA2_OilPres 8193,3
+
+#define DTA3_OilTemp 8194,1
+#define DTA3_Volts 8194,2
+
+#define DTA4_Gear 8195,0
+
+//#define DTA5_ 8196,0
+
+#define DTA6_Crank 8197,2
+*/
 
 #define DTA1_RPM 0,0
 #define DTA1_TPS 0,1

@@ -2,6 +2,7 @@
 
 
 extern CAN can;
+extern Serial pc;
 Ticker tick1; //!!!!!!!!!!!!!!!!!!!!!!!!!!!!! nije hteo da se prevede kao extern
 Ticker tick2;
 Ticker tick3;
@@ -16,19 +17,30 @@ Ticker tick3;
 
 
 bool can_flag[16];
-CANMessage msgs[16];
+CANMessage msgs[1024];
 char data[8],data1[8],data2[8],data3[8];
 char idTX=0,idTX1=0,idTX2=0,idTX3=0;
 float msgInterval1=0,msgInterval2=0,msgInterval3=0;
 
 void can_initRX(){
+   // pc.printf("u RX sam\r\n");
     can.attach(can_msg_receive, CAN::RxIrq); 
 }
-void can_msg_receive(){                     // CAN RX Interrupt Function
+void can_msg_receive(){  
+   // CAN RX Interrupt Function
+    //pc.printf(" I N T RA P T \r\n");
     CANMessage tmpMsg;
     if (can.read(tmpMsg)) {                 //Detect message
+        //pc.printf("p r i m i o \r\n");
         can_flag[tmpMsg.id]=true;
-        msgs[tmpMsg.id]=tmpMsg;  
+       // msgs[tmpMsg.id]=tmpMsg;
+        //pc.printf("PRIMLJEN id: %d\r\n",tmpMsg.id);
+        if(tmpMsg.id >= 8192){
+            msgs[(tmpMsg.id % 8192)]=tmpMsg;  
+        }else{
+            msgs[tmpMsg.id]=tmpMsg;  
+        }
+        
     }
 };
 
